@@ -21,7 +21,7 @@ const registerUser = (req, res) => {
                         if (err) {
                             res.status(503).send({error: 'Something went wrong, try again'})
                         } else {
-                            res.send({message: 'User Registered', token: jwt.createToken(results)})
+                            res.send({message: 'User Registered', token: jwt.createToken(results[0]), results})
                         }
                     })
                 }
@@ -39,7 +39,7 @@ const loginUser = (req, res) => {
         } else if (result.length > 0) {
             const comparedPassword = await bcrypt.compare(password, result[0].user_password)
             if (comparedPassword === true) {
-                res.send({token: jwt.createToken(result)})
+                res.send({token: jwt.createToken(result[0]), result})
             } else {
                 res.status(503).send({message: 'Username or password are incorrect'})
             }

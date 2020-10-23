@@ -3,28 +3,44 @@ const { insertVehicleQuery, updateVehicleQuery, deleteVehicleQuery, selectJoinVe
 
 const insertVehicle = (req, res) => {
     const {vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, vehicle_state} = req.body;
-    
-    connection.query(insertVehicleQuery(vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, vehicle_state), (err, results, fields) => {
-        if (err) {
-            res.status(400).send({error: 'Error, vehicle not inserted'})
+    if (vehicle_plate.length === 8) {
+        const comparePlate = RegExp(/[A-Z](-)[A-Z][A-Z][A-Z][0-9][0-9][0-9]/g).test(vehicle_plate)
+        if (comparePlate === true) {
+            connection.query(insertVehicleQuery(vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, vehicle_state), (err, results, fields) => {
+                if (err) {
+                    res.status(400).send({error: 'Error, vehicle not inserted'})
+                } else {
+                    res.send({message: 'Vehicle Inserted'})
+                }
+            })
         } else {
-            res.send({message: 'Vehicle Inserted'})
+            res.status(400).send({message: 'Plate is not valid'})
         }
-    })
+    } else {
+        res.status(400).send({message: 'Plate is not valid'})
+    }
 }
 
 const updateVehicle = (req, res) => {
     const {vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, vehicle_state, vehicle_id} = req.body;
-
-    connection.query(updateVehicleQuery(vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, vehicle_state, vehicle_id), (err, results, fields) => {
-        if (err) {
-            res.status(400).send({error: 'Error, vehicle not updated'})
-        } else if (results.affectedRows > 0) {
-            res.send({message: 'Vehicle Updated'})
+    if (vehicle_plate.length === 8) {
+        const comparePlate = RegExp(/[A-Z](-)[A-Z][A-Z][A-Z][0-9][0-9][0-9]/g).test(vehicle_plate)
+        if (comparePlate === true) {
+            connection.query(updateVehicleQuery(vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, vehicle_state, vehicle_id), (err, results, fields) => {
+                if (err) {
+                    res.status(400).send({error: 'Error, vehicle not updated'})
+                } else if (results.affectedRows > 0) {
+                    res.send({message: 'Vehicle Updated'})
+                } else {
+                    res.status(404).send({message: 'Error, vehicle does not exist'})
+                }
+            })
         } else {
-            res.status(404).send({message: 'Error, vehicle does not exist'})
+            res.status(400).send({message: 'Plate is not valid'})
         }
-    })
+    } else {
+        res.status(400).send({message: 'Plate is not valid'})
+    }
 
 }
 
