@@ -10,11 +10,11 @@ const selectUserQuery = (username) => {
 
 //SEARCH QUERY
 const searchUserQuery = (id) => {
-    return`SELECT * FROM Users WHERE idUser = '${id}'`
+    return `SELECT * FROM Users WHERE idUser = '${id}'`
 }
 
 module.exports = {
     insertUserQuery,
     selectUserQuery,
-    searchUserQuery
+    searchUserQuery,
 }

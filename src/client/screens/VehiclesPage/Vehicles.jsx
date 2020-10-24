@@ -353,7 +353,7 @@ const VehiclesPage = () => {
                         })
                     ) : (
                         <tr className="table-row">
-                            <td className="table-data" colSpan="5">
+                            <td className="table-data" colSpan="6">
                                 No hay datos
                             </td>
                         </tr>
