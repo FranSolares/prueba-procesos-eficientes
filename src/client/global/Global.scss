@@ -1,0 +1,94 @@
+$cyan: (
+    100: #19d3da,
+    200: #a6f6f1,
+    300: #00c4ff,
+    400: #42d9ff
+);
+
+$black: (
+    100: #000000,
+    200: #373a40
+);
+
+$gray: (
+    100: #eeeeee,
+    200: #edf2f7,
+    300: #e2e8f0,
+    400: #cbd5e0,
+    500: #686d76
+);
+
+$primary: (
+    color: map-get($map: $black, $key: 200),
+    text: white,
+    hover: map-get($map: $gray, $key: 500)
+);
+
+$secondary: (
+    color: map-get($map: $gray, $key: 400),
+    text: map-get($map: $black, $key: 100),
+    hover: map-get($map: $gray, $key: 300)
+);
+
+%button {
+    width: 300px;
+    height: 40px;
+    margin: 10px;
+    align-self: center;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    box-shadow: 0 1px 2px black(0.1), inset 0 1px 0 white(0.15), inset 0 -1px 0 black(0.15);
+    cursor: pointer;
+};
+
+%table {
+    table-layout: auto;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+};
+
+%table-headers {
+    border-bottom: 1px solid map-get($map: $gray, $key: 400);
+    padding: 20px 0;
+    color: gray;
+};
+
+%table-data {
+    padding: 10px 0;
+};
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+};
+
+
+.loading-progress {
+    height: 5px;
+    width: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, red 0%, yellow 15%, lime 30%, cyan 50%, blue 65%, magenta 80%, red 100%);
+    background-size: 200%;
+    animation: moveGradient 5s linear infinite;
+    position: absolute;
+};
+
+
+
+@keyframes moveGradient {
+    from {
+        background-position: 0% 0%
+    }
+
+    to{
+        background-position: -200% 0%
+    }
+    
+}
+  

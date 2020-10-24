@@ -1,0 +1,25 @@
+@import '../../global/Global.scss';
+
+.error-page-container {
+    background: linear-gradient(45deg, rgba(23,159,209,1) 0%, rgba(120,250,243,1) 68%, rgba(185,255,252,1) 100%);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.error-message {
+    color: red;
+}
+
+.button {
+    @extend %button;
+    background-color: map-get($map: $primary, $key: color);
+    color: map-get($map: $primary, $key: text);
+    width: 200px;
+    &:hover {
+        background-color: map-get($map: $primary, $key: hover);
+    }
+};

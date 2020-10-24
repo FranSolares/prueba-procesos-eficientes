@@ -45,6 +45,8 @@ INSERT INTO Vehicles (vehicle_brand, vehicle_model, vehicle_year, vehicle_plate,
 INSERT INTO Users (user_username, user_password, user_role) values ('ADMIN', '$2b$05$y40ZPqwP8ucaliq.PhKWX.a2uofd0aQ/STMKGKlUc7eUI/UxdNdcC', 'ADMIN');
 INSERT INTO Users (user_username, user_password, user_role) values ('USER', '$2b$05$HGgGbTclQ38Sc9Lq3Q3XPeqXJ8tu3Iy5GX6Pl1REAFlYDKbfxJ4aK', 'USER');
 
-SELECT idVehicle, vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, state_name FROM Vehicles INNER JOIN Vehicle_States ON vehicle_state=idState;
+SELECT idVehicle, vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, state_name FROM Vehicles INNER JOIN Vehicle_States ON vehicle_state=idState ORDER BY idVehicle;
+
+DELETE FROM Vehicles WHERE idVehicle = 6;
 
 SELECT * FROM Users;

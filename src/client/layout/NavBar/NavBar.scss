@@ -1,0 +1,30 @@
+@import '../../global/Global.scss';
+
+.navbar {
+    background: linear-gradient(to bottom, rgba(0,196,255,1) 0%, rgba(113,239,224,1) 80%, rgba(182,237,231,1) 100%);
+    width: 300px;
+    height: 100vh;
+    border-radius: 0 25px 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .nav-link {
+        width: 150px;
+        height: 30px;
+        margin: 20px 0px 0px 0px;
+        padding: 10px;
+        background-color: map-get($map: $primary, $key: color);
+        text-decoration: none;
+        color: map-get($map: $primary, $key: text);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background-color: map-get($map: $primary, $key: hover);
+            color: map-get($map: $primary, $key: text);
+        }
+    }
+
+}

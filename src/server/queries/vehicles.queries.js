@@ -22,7 +22,7 @@ const selectAllVehiclesQuery = () => {
 
 //INNER JOIN BETWEEN TABLE VEHICLES AND VEHICLE_STATES
 const selectJoinVehiclesQuery = () => {
-    return `SELECT vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, state_name FROM Vehicles INNER JOIN Vehicle_States ON vehicle_state = idState`
+    return `SELECT idVehicle, vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, vehicle_state, state_name FROM Vehicles INNER JOIN Vehicle_States ON vehicle_state = idState ORDER BY idVehicle`
 }
 
 module.exports = {

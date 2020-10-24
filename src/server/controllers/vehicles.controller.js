@@ -1,4 +1,4 @@
-const connection = require('../database/mysql.connection');
+const connection = require('../database/mysql.connection')
 const { insertVehicleQuery, updateVehicleQuery, deleteVehicleQuery, selectJoinVehiclesQuery} = require('../queries/vehicles.queries')
 
 const insertVehicle = (req, res) => {
@@ -8,9 +8,9 @@ const insertVehicle = (req, res) => {
         if (comparePlate === true) {
             connection.query(insertVehicleQuery(vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, vehicle_state), (err, results, fields) => {
                 if (err) {
-                    res.status(400).send({error: 'Error, vehicle not inserted'})
+                    res.status(503).send({error: 'Error, vehicle not inserted'})
                 } else {
-                    res.send({message: 'Vehicle Inserted'})
+                    res.send({message: 'Vehicle Inserted', 'insertedID': results.insertId})
                 }
             })
         } else {
@@ -28,7 +28,7 @@ const updateVehicle = (req, res) => {
         if (comparePlate === true) {
             connection.query(updateVehicleQuery(vehicle_brand, vehicle_model, vehicle_year, vehicle_plate, vehicle_state, vehicle_id), (err, results, fields) => {
                 if (err) {
-                    res.status(400).send({error: 'Error, vehicle not updated'})
+                    res.status(503).send({error: 'Error, vehicle not updated'})
                 } else if (results.affectedRows > 0) {
                     res.send({message: 'Vehicle Updated'})
                 } else {
@@ -49,7 +49,7 @@ const deleteVehicle = (req, res) => {
 
     connection.query(deleteVehicleQuery(vehicle_id), (err, results, fields) => {
         if (err) {
-            res.status(400).send({error: 'Error, vehicle not deleted', err})
+            res.status(400).send({error: 'Error, vehicle not deleted', err: err})
         } else if (results.affectedRows > 0) {
             res.send({message: 'Vehicle Deleted'})
         } else {
@@ -63,7 +63,7 @@ const selectVehicles = (req, res) => {
 
     connection.query(selectJoinVehiclesQuery(), (err, results) => {
         if (err) {
-            res.status(400).send({error: 'Error in database', err: err})  
+            res.status(503).send({error: 'Error in database'})  
         } else {
             res.send({data: results})
         }

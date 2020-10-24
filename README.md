@@ -4,16 +4,17 @@ Aplicación realizada en dos partes Back-End haciendo una Rest-API en NodeJs, Ex
 
 ## Levantar la base de datos
 Requisitos
-  - Tener MySQL Server descargado y funcionando en el puerto a preferencía.
+  - Tener MySQL Server descargado y funcionando.
  
 Instrucciones
   - Por medio del Command Prompt ejecutar ```$ mysql --user=usuario --password=usuario``` con el usuario y contraseña de nuestra base de datos.
   - Dentro de la interfaz de comandos de mysql, ejecutar el comando ```$ source ``` seguido de la dirección del archivo ```.sql``` dentro del proyecto, la cual se encuentra en ```\prueba-procesos-eficientes\src\server\database\DB_PEPrueba.sql```.
   - Ejemplo: ```$ source C:\Users\fsolares\Documents\prueba-procesos-eficientes\src\server\database\DB_PEPrueba.sql```.
 
-### Ejecutar el proyecto de forma local
+## Ejecutar el proyecto de forma local
 Requisitos
-  - Tener NodeJs o Yarn instalados en la computadora.
+  - Tener NodeJs y Yarn instalados en la computadora.
+  - Instalar SASS en la computadora, se puede hacer con este comando en el Command Prompt ```$ npm install -g sass```.
   - Instalar todas las dependencías necesarias para el proyecto, para hacerlo dentro del Command Prompt se dirigen a la carpeta raiz del proyecto y ejecutan ```$ yarn install``` o ```$ npm install```
   - En la carpeta raiz del proyecto crear un archivo ```.env``` donde se deben escribir keys y valores importantes que se deben guardar ahí para el correcto funcionamiento de la API. Un archivo ```.env-dist``` se encuentra en la raiz del proyecto para ver los nombres de las KEYS que deben ir escritas, todas deben ser colocadas en el archivo ```.env```.
   
