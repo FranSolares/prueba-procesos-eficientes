@@ -44,7 +44,7 @@ El proyecto ya viene con una interfaz grafica realizada en React, por la cual so
 ### Usuario
 - Para poder acceder al resto de rutas de la API es necesario un token, el cual se obtiene ya sea haciendo una peticion ```POST``` de login o de registro, las rutas para cada petición son estas.
 
-    > ```http://localhost:puerto/user/login``` 
+    > ```http://localhost:puerto/user/login```  
     > ```http://localhost:puerto/user/register```
 - En ambos casos es necesario enviar en el body los siguientes atributos.
     > username: <nombre del usuario> y  password: <contraseña del usuario>
