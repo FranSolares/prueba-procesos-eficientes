@@ -10,7 +10,7 @@ const NavBar = (props) => {
 
     return(
         <div className='navbar'>
-            <NavLink to='/vehicles' className='nav-link'>Vehicles</NavLink>
+            <NavLink to='/vehicles' className='nav-link'>Vehículos</NavLink>
             <NavLink to='#' onClick={handleSession} className='nav-link' >Cerrar Sesión</NavLink>
         </div>
     )
